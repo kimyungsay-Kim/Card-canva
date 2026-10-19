@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>รายชื่อผู้ติดต่อ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #eef1ef;
+    font-family: 'Noto Sans Thai', system-ui, sans-serif;
+    padding: 16px;
+  }
+  .header {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 8px 0 16px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 20px 14px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .nickname {
+    font-size: 17px;
+    font-weight: 700;
+    color: #141413;
+  }
+  .list-name {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: -6px;
+  }
+  .phone-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #e3f6ea;
+    color: #1a8a4a;
+    padding: 7px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .fullname {
+    font-size: 13px;
+    color: #4b5563;
+    margin-top: 2px;
+  }
+  .fullname.missing {
+    color: #9ca3af;
+    font-style: italic;
+  }
+  footer {
+    text-align: center;
+    font-size: 11px;
+    color: #9ca3af;
+    margin: 24px 0 8px;
+  }
+  .search-wrap {
+    max-width: 520px;
+    margin: 0 auto 16px;
+    position: relative;
+  }
+  .search-wrap input {
+    width: 100%;
+    font-family: inherit;
+    font-size: 15px;
+    padding: 12px 14px 12px 40px;
+    border-radius: 999px;
+    border: none;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    outline: none;
+    color: #141413;
+  }
+  .search-wrap input::placeholder { color: #9ca3af; }
+  .search-wrap svg {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+  }
+  .no-results {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 14px;
+    margin-top: 32px;
+    display: none;
+  }
+</style>
+</head>
+<body>
+<div class="header">รายชื่อผู้ติดต่อ</div>
+<div class="search-wrap">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+    <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  <input id="searchInput" type="text" placeholder="ค้นหาชื่อหรือเบอร์โทร...">
+</div>
+<div class="grid" id="cardGrid">
+<div class="card" data-search="กอล์ฟ นายจักรกฤษณ์ ดลผาด 064-569-2642">
+  <div class="avatar" style="background:#14b8a6">ก</div>
+  <div class="nickname">กอล์ฟ</div>
+  
+  <a class="phone-pill" href="tel:0645692642"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>064-569-2642</span></a>
+  <div class="fullname">นายจักรกฤษณ์ ดลผาด</div>
+</div>
+<div class="card" data-search="คุณบอล วรายุทธ บอล นายวรายุทธ พวงมณี 062-783-2299">
+  <div class="avatar" style="background:#22c55e">ค</div>
+  <div class="nickname">คุณบอล วรายุทธ</div>
+  <div class="list-name">ชื่อในลิสต์: บอล</div>
+  <a class="phone-pill" href="tel:0627832299"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>062-783-2299</span></a>
+  <div class="fullname">นายวรายุทธ พวงมณี</div>
+</div>
+<div class="card" data-search="ตุ่ม นายดิศรา ทวีราช 088-253-5918">
+  <div class="avatar" style="background:#22c55e">ต</div>
+  <div class="nickname">ตุ่ม</div>
+  
+  <a class="phone-pill" href="tel:0882535918"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>088-253-5918</span></a>
+  <div class="fullname">นายดิศรา ทวีราช</div>
+</div>
+<div class="card" data-search="ต้า 094-391-6541">
+  <div class="avatar" style="background:#3b82f6">ต</div>
+  <div class="nickname">ต้า</div>
+  
+  <a class="phone-pill" href="tel:0943916541"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>094-391-6541</span></a>
+  <div class="fullname missing">ไม่ได้ระบุชื่อเต็ม</div>
+</div>
+<div class="card" data-search="ตั้ม 084-081-7532">
+  <div class="avatar" style="background:#6366f1">ต</div>
+  <div class="nickname">ตั้ม</div>
+  
+  <a class="phone-pill" href="tel:0840817532"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>084-081-7532</span></a>
+  <div class="fullname missing">ไม่ได้ระบุชื่อเต็ม</div>
+</div>
+<div class="card" data-search="เกมส์ นายยุทธพิชัย ขวัญครอง 082-789-2389">
+  <div class="avatar" style="background:#22c55e">เ</div>
+  <div class="nickname">เกมส์</div>
+  
+  <a class="phone-pill" href="tel:0827892389"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>082-789-2389</span></a>
+  <div class="fullname">นายยุทธพิชัย ขวัญครอง</div>
+</div>
+<div class="card" data-search="จิรนันท์ นันท์ นายจิรนันท์ ศรีเมือง 083-017-6308">
+  <div class="avatar" style="background:#6366f1">จ</div>
+  <div class="nickname">จิรนันท์</div>
+  <div class="list-name">ชื่อในลิสต์: นันท์</div>
+  <a class="phone-pill" href="tel:0830176308"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>083-017-6308</span></a>
+  <div class="fullname">นายจิรนันท์ ศรีเมือง</div>
+</div>
+<div class="card" data-search="ถาวร นายถาวร จาวเจริญทรัพย์ 063-074-5695">
+  <div class="avatar" style="background:#8b5cf6">ถ</div>
+  <div class="nickname">ถาวร</div>
+  
+  <a class="phone-pill" href="tel:0630745695"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>063-074-5695</span></a>
+  <div class="fullname">นายถาวร จาวเจริญทรัพย์</div>
+</div>
+<div class="card" data-search="เต้ นายทวีป นิตย์นรา 086-366-2295">
+  <div class="avatar" style="background:#3b82f6">เ</div>
+  <div class="nickname">เต้</div>
+  
+  <a class="phone-pill" href="tel:0863662295"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>086-366-2295</span></a>
+  <div class="fullname">นายทวีป นิตย์นรา</div>
+</div>
+<div class="card" data-search="ตู่ นายชาญวิทย์ ชูริบัติ 092-904-4379">
+  <div class="avatar" style="background:#14b8a6">ต</div>
+  <div class="nickname">ตู่</div>
+  
+  <a class="phone-pill" href="tel:0929044379"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>092-904-4379</span></a>
+  <div class="fullname">นายชาญวิทย์ ชูริบัติ</div>
+</div>
+<div class="card" data-search="มิ๊ว นายวิชาวิมล ซอละศรี 099-298-6777">
+  <div class="avatar" style="background:#ec4899">ม</div>
+  <div class="nickname">มิ๊ว</div>
+  
+  <a class="phone-pill" href="tel:0992986777"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>099-298-6777</span></a>
+  <div class="fullname">นายวิชาวิมล ซอละศรี</div>
+</div>
+<div class="card" data-search="พิเชษฐ์ นายพิเชษฐ์ คำลอย 081-140-1914">
+  <div class="avatar" style="background:#6366f1">พ</div>
+  <div class="nickname">พิเชษฐ์</div>
+  
+  <a class="phone-pill" href="tel:0811401914"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>081-140-1914</span></a>
+  <div class="fullname">นายพิเชษฐ์ คำลอย</div>
+</div>
+<div class="card" data-search="ป๊อป นายปฏิภาณ ปิงคะยอม 083-699-6235">
+  <div class="avatar" style="background:#f59e0b">ป</div>
+  <div class="nickname">ป๊อป</div>
+  
+  <a class="phone-pill" href="tel:0836996235"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>083-699-6235</span></a>
+  <div class="fullname">นายปฏิภาณ ปิงคะยอม</div>
+</div>
+<div class="card" data-search="นิก นายรัฐพงษ์ โคตรพัฒน์ 093-374-2686">
+  <div class="avatar" style="background:#f59e0b">น</div>
+  <div class="nickname">นิก</div>
+  
+  <a class="phone-pill" href="tel:0933742686"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>093-374-2686</span></a>
+  <div class="fullname">นายรัฐพงษ์ โคตรพัฒน์</div>
+</div>
+<div class="card" data-search="ศักดิ์ นายสมศักดิ์ ปูลา 087-217-5432">
+  <div class="avatar" style="background:#22c55e">ศ</div>
+  <div class="nickname">ศักดิ์</div>
+  
+  <a class="phone-pill" href="tel:0872175432"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>087-217-5432</span></a>
+  <div class="fullname">นายสมศักดิ์ ปูลา</div>
+</div>
+<div class="card" data-search="วิน 085-982-2196">
+  <div class="avatar" style="background:#14b8a6">ว</div>
+  <div class="nickname">วิน</div>
+  
+  <a class="phone-pill" href="tel:0859822196"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>085-982-2196</span></a>
+  <div class="fullname missing">ไม่ได้ระบุชื่อเต็ม</div>
+</div>
+<div class="card" data-search="เรียว 082-215-6521">
+  <div class="avatar" style="background:#22c55e">เ</div>
+  <div class="nickname">เรียว</div>
+  
+  <a class="phone-pill" href="tel:0822156521"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>082-215-6521</span></a>
+  <div class="fullname missing">ไม่ได้ระบุชื่อเต็ม</div>
+</div>
+<div class="card" data-search="ยืนยังเซ นายอดิศร สายทอง 090-971-9046">
+  <div class="avatar" style="background:#6366f1">ย</div>
+  <div class="nickname">ยืนยังเซ</div>
+  
+  <a class="phone-pill" href="tel:0909719046"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>090-971-9046</span></a>
+  <div class="fullname">นายอดิศร สายทอง</div>
+</div>
+<div class="card" data-search="กุ้ง นายจักรกฤษ เหล่ารบ 086-912-4793">
+  <div class="avatar" style="background:#6366f1">ก</div>
+  <div class="nickname">กุ้ง</div>
+  
+  <a class="phone-pill" href="tel:0869124793"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>086-912-4793</span></a>
+  <div class="fullname">นายจักรกฤษ เหล่ารบ</div>
+</div>
+<div class="card" data-search="เอก 095-474-9345">
+  <div class="avatar" style="background:#22c55e">เ</div>
+  <div class="nickname">เอก</div>
+  
+  <a class="phone-pill" href="tel:0954749345"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>095-474-9345</span></a>
+  <div class="fullname missing">ไม่ได้ระบุชื่อเต็ม</div>
+</div>
+<div class="card" data-search="อาร์ต 092-494-0449">
+  <div class="avatar" style="background:#f59e0b">อ</div>
+  <div class="nickname">อาร์ต</div>
+  
+  <a class="phone-pill" href="tel:0924940449"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>092-494-0449</span></a>
+  <div class="fullname missing">ไม่ได้ระบุชื่อเต็ม</div>
+</div>
+<div class="card" data-search="ออฟ นายปิยะพล เหมหา 091-853-1210">
+  <div class="avatar" style="background:#8b5cf6">อ</div>
+  <div class="nickname">ออฟ</div>
+  
+  <a class="phone-pill" href="tel:0918531210"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>091-853-1210</span></a>
+  <div class="fullname">นายปิยะพล เหมหา</div>
+</div>
+<div class="card" data-search="ก็อฟ GOF นายเหมรัช เพิ่มสุข 090-992-5146">
+  <div class="avatar" style="background:#ec4899">ก</div>
+  <div class="nickname">ก็อฟ</div>
+  <div class="list-name">ชื่อในลิสต์: GOF</div>
+  <a class="phone-pill" href="tel:0909925146"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>090-992-5146</span></a>
+  <div class="fullname">นายเหมรัช เพิ่มสุข</div>
+</div>
+<div class="card" data-search="ตาต้า น.ส.ดวงตา ยงยุทธ 086-407-5668">
+  <div class="avatar" style="background:#ef4444">ต</div>
+  <div class="nickname">ตาต้า</div>
+  
+  <a class="phone-pill" href="tel:0864075668"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>086-407-5668</span></a>
+  <div class="fullname">น.ส.ดวงตา ยงยุทธ</div>
+</div>
+<div class="card" data-search="หนึ่ง นายวรินทร์ภวิศ ธุวชิตปริยฉัตร 084-037-1971">
+  <div class="avatar" style="background:#6366f1">ห</div>
+  <div class="nickname">หนึ่ง</div>
+  
+  <a class="phone-pill" href="tel:0840371971"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>084-037-1971</span></a>
+  <div class="fullname">นายวรินทร์ภวิศ ธุวชิตปริยฉัตร</div>
+</div>
+<div class="card" data-search="ฟาง น.ส.กนกพิชญ์ ทิพย์ศักดิ์ 096-124-8705">
+  <div class="avatar" style="background:#f59e0b">ฟ</div>
+  <div class="nickname">ฟาง</div>
+  
+  <a class="phone-pill" href="tel:0961248705"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>096-124-8705</span></a>
+  <div class="fullname">น.ส.กนกพิชญ์ ทิพย์ศักดิ์</div>
+</div>
+<div class="card" data-search="พล ขจรยศ นายขจรยศ เกิดพิทักษ์ 097-006-9606">
+  <div class="avatar" style="background:#14b8a6">พ</div>
+  <div class="nickname">พล</div>
+  <div class="list-name">ชื่อในลิสต์: ขจรยศ</div>
+  <a class="phone-pill" href="tel:0970069606"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>097-006-9606</span></a>
+  <div class="fullname">นายขจรยศ เกิดพิทักษ์</div>
+</div>
+<div class="card" data-search="หนึ่ง บดินทร์ นายบดินทร์ เพชรกูล 080-072-2883">
+  <div class="avatar" style="background:#f59e0b">ห</div>
+  <div class="nickname">หนึ่ง</div>
+  <div class="list-name">ชื่อในลิสต์: บดินทร์</div>
+  <a class="phone-pill" href="tel:0800722883"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>080-072-2883</span></a>
+  <div class="fullname">นายบดินทร์ เพชรกูล</div>
+</div>
+<div class="card" data-search="บอย นายธีรภัทร วันนาพ่อ 098-760-5885">
+  <div class="avatar" style="background:#ef4444">บ</div>
+  <div class="nickname">บอย</div>
+  
+  <a class="phone-pill" href="tel:0987605885"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>098-760-5885</span></a>
+  <div class="fullname">นายธีรภัทร วันนาพ่อ</div>
+</div>
+<div class="card" data-search="ดิว นายกันอริ เพ็งอุบล 095-949-1733">
+  <div class="avatar" style="background:#ec4899">ด</div>
+  <div class="nickname">ดิว</div>
+  
+  <a class="phone-pill" href="tel:0959491733"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>095-949-1733</span></a>
+  <div class="fullname">นายกันอริ เพ็งอุบล</div>
+</div>
+<div class="card" data-search="ตั้ม สโตร์ ตั้มโตร์ ธนวัฒน์ มูลนาเครือ 098-197-9587">
+  <div class="avatar" style="background:#f59e0b">ต</div>
+  <div class="nickname">ตั้ม สโตร์</div>
+  <div class="list-name">ชื่อในลิสต์: ตั้มโตร์</div>
+  <a class="phone-pill" href="tel:0981979587"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>098-197-9587</span></a>
+  <div class="fullname">ธนวัฒน์ มูลนาเครือ</div>
+</div>
+<div class="card" data-search="พี่แอน แอน นายจรัสพงศ์ พรหมพินิจ 098-553-6440">
+  <div class="avatar" style="background:#ec4899">พ</div>
+  <div class="nickname">พี่แอน</div>
+  <div class="list-name">ชื่อในลิสต์: แอน</div>
+  <a class="phone-pill" href="tel:0985536440"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>098-553-6440</span></a>
+  <div class="fullname">นายจรัสพงศ์ พรหมพินิจ</div>
+</div>
+<div class="card" data-search="โบ๊ท นายสุเมธ พิมพ์ปรุ 087-651-1303">
+  <div class="avatar" style="background:#8b5cf6">โ</div>
+  <div class="nickname">โบ๊ท</div>
+  
+  <a class="phone-pill" href="tel:0876511303"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>087-651-1303</span></a>
+  <div class="fullname">นายสุเมธ พิมพ์ปรุ</div>
+</div>
+<div class="card" data-search="คุณอู๋ อู๋ นายกุลทล สินสกุล 097-010-1434">
+  <div class="avatar" style="background:#6366f1">ค</div>
+  <div class="nickname">คุณอู๋</div>
+  <div class="list-name">ชื่อในลิสต์: อู๋</div>
+  <a class="phone-pill" href="tel:0970101434"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>097-010-1434</span></a>
+  <div class="fullname">นายกุลทล สินสกุล</div>
+</div>
+<div class="card" data-search="อั๋น นาย ธนกร ระวังการณ์ 080-227-1166">
+  <div class="avatar" style="background:#ec4899">อ</div>
+  <div class="nickname">อั๋น</div>
+  
+  <a class="phone-pill" href="tel:0802271166"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>080-227-1166</span></a>
+  <div class="fullname">นาย ธนกร ระวังการณ์</div>
+</div>
+<div class="card" data-search="แบงค์ นายนครินทร์ วรรณศรี 097-141-1636">
+  <div class="avatar" style="background:#22c55e">แ</div>
+  <div class="nickname">แบงค์</div>
+  
+  <a class="phone-pill" href="tel:0971411636"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>097-141-1636</span></a>
+  <div class="fullname">นายนครินทร์ วรรณศรี</div>
+</div>
+<div class="card" data-search="ฮอท นายนราธิป อังกูรพาณิชญกิจ 080-413-5690">
+  <div class="avatar" style="background:#ec4899">ฮ</div>
+  <div class="nickname">ฮอท</div>
+  
+  <a class="phone-pill" href="tel:0804135690"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>080-413-5690</span></a>
+  <div class="fullname">นายนราธิป อังกูรพาณิชญกิจ</div>
+</div>
+<div class="card" data-search="เต้ย นายศักดิ์ จันทร์แสง 097-061-3977">
+  <div class="avatar" style="background:#f59e0b">เ</div>
+  <div class="nickname">เต้ย</div>
+  
+  <a class="phone-pill" href="tel:0970613977"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>097-061-3977</span></a>
+  <div class="fullname">นายศักดิ์ จันทร์แสง</div>
+</div>
+<div class="card" data-search="ไนท์ นายศรราม จันทร์ชม 065-964-1614">
+  <div class="avatar" style="background:#6366f1">ไ</div>
+  <div class="nickname">ไนท์</div>
+  
+  <a class="phone-pill" href="tel:0659641614"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>065-964-1614</span></a>
+  <div class="fullname">นายศรราม จันทร์ชม</div>
+</div>
+<div class="card" data-search="นุ นายวิษณุ ประกอบแสง 085-426-9711">
+  <div class="avatar" style="background:#14b8a6">น</div>
+  <div class="nickname">นุ</div>
+  
+  <a class="phone-pill" href="tel:0854269711"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>085-426-9711</span></a>
+  <div class="fullname">นายวิษณุ ประกอบแสง</div>
+</div>
+<div class="card" data-search="เอ็ม นายพีรพงษ์ ฟักแก้ว 065-645-6490">
+  <div class="avatar" style="background:#ef4444">เ</div>
+  <div class="nickname">เอ็ม</div>
+  
+  <a class="phone-pill" href="tel:0656456490"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>065-645-6490</span></a>
+  <div class="fullname">นายพีรพงษ์ ฟักแก้ว</div>
+</div>
+<div class="card" data-search="ต้น นายปริญญา อยู่บ้านคลอง 091-729-9930">
+  <div class="avatar" style="background:#14b8a6">ต</div>
+  <div class="nickname">ต้น</div>
+  
+  <a class="phone-pill" href="tel:0917299930"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>091-729-9930</span></a>
+  <div class="fullname">นายปริญญา อยู่บ้านคลอง</div>
+</div>
+<div class="card" data-search="โจ เสก เสกสรร นายเสกสรร แสงจันทร์ 098-879-1260">
+  <div class="avatar" style="background:#ef4444">โ</div>
+  <div class="nickname">โจ เสก</div>
+  <div class="list-name">ชื่อในลิสต์: เสกสรร</div>
+  <a class="phone-pill" href="tel:0988791260"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>098-879-1260</span></a>
+  <div class="fullname">นายเสกสรร แสงจันทร์</div>
+</div>
+<div class="card" data-search="แป๊บซี่ นายวัชรพงษ์ ขุนพรม 063-814-3575">
+  <div class="avatar" style="background:#3b82f6">แ</div>
+  <div class="nickname">แป๊บซี่</div>
+  
+  <a class="phone-pill" href="tel:0638143575"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>063-814-3575</span></a>
+  <div class="fullname">นายวัชรพงษ์ ขุนพรม</div>
+</div>
+<div class="card" data-search="แอน นายจรัสพงศ์ พรหมพินิจ 098-553-6440">
+  <div class="avatar" style="background:#f59e0b">แ</div>
+  <div class="nickname">แอน</div>
+  
+  <a class="phone-pill" href="tel:0985536440"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>098-553-6440</span></a>
+  <div class="fullname">นายจรัสพงศ์ พรหมพินิจ</div>
+</div>
+<div class="card" data-search="โอ๋ นายคมกริช รัตนากรณ์ 081-982-5979">
+  <div class="avatar" style="background:#3b82f6">โ</div>
+  <div class="nickname">โอ๋</div>
+  
+  <a class="phone-pill" href="tel:0819825979"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>081-982-5979</span></a>
+  <div class="fullname">นายคมกริช รัตนากรณ์</div>
+</div>
+<div class="card" data-search="นุ่ม น.ส.นิศา อุทัยรัมย์ 098-069-0609">
+  <div class="avatar" style="background:#8b5cf6">น</div>
+  <div class="nickname">นุ่ม</div>
+  
+  <a class="phone-pill" href="tel:0980690609"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>098-069-0609</span></a>
+  <div class="fullname">น.ส.นิศา อุทัยรัมย์</div>
+</div>
+<div class="card" data-search="นงค์ลักษณ์ พี่ลัก น.ส.นงค์ลักษณ์ ชิณศรี 098-103-9949">
+  <div class="avatar" style="background:#3b82f6">น</div>
+  <div class="nickname">นงค์ลักษณ์</div>
+  <div class="list-name">ชื่อในลิสต์: พี่ลัก</div>
+  <a class="phone-pill" href="tel:0981039949"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>098-103-9949</span></a>
+  <div class="fullname">น.ส.นงค์ลักษณ์ ชิณศรี</div>
+</div>
+<div class="card" data-search="หมู นายธรรพ์ รองเมือง 099-179-0525">
+  <div class="avatar" style="background:#ef4444">ห</div>
+  <div class="nickname">หมู</div>
+  
+  <a class="phone-pill" href="tel:0991790525"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>099-179-0525</span></a>
+  <div class="fullname">นายธรรพ์ รองเมือง</div>
+</div>
+<div class="card" data-search="ต๊อก น.ส.ฐิตาพร จบแล้ว 064-493-7069">
+  <div class="avatar" style="background:#3b82f6">ต</div>
+  <div class="nickname">ต๊อก</div>
+  
+  <a class="phone-pill" href="tel:0644937069"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>064-493-7069</span></a>
+  <div class="fullname">น.ส.ฐิตาพร จบแล้ว</div>
+</div>
+<div class="card" data-search="เบิร์ด นายธีระโชติ แสงพระจันทร์ 064-505-4949">
+  <div class="avatar" style="background:#3b82f6">เ</div>
+  <div class="nickname">เบิร์ด</div>
+  
+  <a class="phone-pill" href="tel:0645054949"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>064-505-4949</span></a>
+  <div class="fullname">นายธีระโชติ แสงพระจันทร์</div>
+</div>
+<div class="card" data-search="อีฟ นายนัฐพงษ์ สันตะลับ 085-759-1538">
+  <div class="avatar" style="background:#ec4899">อ</div>
+  <div class="nickname">อีฟ</div>
+  
+  <a class="phone-pill" href="tel:0857591538"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>085-759-1538</span></a>
+  <div class="fullname">นายนัฐพงษ์ สันตะลับ</div>
+</div>
+<div class="card" data-search="เบน นายพงษ์พันธ์ พันเถาว์ 064-771-9342">
+  <div class="avatar" style="background:#3b82f6">เ</div>
+  <div class="nickname">เบน</div>
+  
+  <a class="phone-pill" href="tel:0647719342"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>064-771-9342</span></a>
+  <div class="fullname">นายพงษ์พันธ์ พันเถาว์</div>
+</div>
+<div class="card" data-search="อาร์ม นายฐานิฏฐ์ ไชยรัตน์ 061-060-0808">
+  <div class="avatar" style="background:#f59e0b">อ</div>
+  <div class="nickname">อาร์ม</div>
+  
+  <a class="phone-pill" href="tel:0610600808"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/>
+</svg><span>061-060-0808</span></a>
+  <div class="fullname">นายฐานิฏฐ์ ไชยรัตน์</div>
+</div>
+</div>
+<div class="no-results" id="noResults">ไม่พบรายชื่อที่ค้นหา</div>
+<footer>กดเบอร์โทรเพื่อโทรออกได้ทันที</footer>
+<script>
+  const input = document.getElementById('searchInput');
+  const cards = Array.from(document.querySelectorAll('.card'));
+  const noResults = document.getElementById('noResults');
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    let visible = 0;
+    cards.forEach(card => {
+      const match = card.dataset.search.toLowerCase().includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  });
+</script>
+</body>
+</html>
